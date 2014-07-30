@@ -1,0 +1,41 @@
+<% provide(:title, 'Home')%>
+<h1>Welcome</h1>
+<h2>this is my first rails application</h2>
+
+<script type="text/javascript">
+   $(function(){
+       $('.toggleLink').click(function(){
+           $('#toggle_div').slideToggle();
+       });
+       $('.signup_link').click(function(){
+           $('#signup_div').slideToggle();
+       });
+   });
+</script>
+<a href="javascript:void(0)" class="toggleLink">Signin</a>
+<a href="javascript:void(0)" class="signup_link">Signup</a>
+<div id="toggle_div" style="display:none;">     <!-- using external stylesheets of course -->
+<%= form_tag do   %>
+	<%= label_tag :name %>
+	<%= text_field_tag :name %>	
+	<%= label_tag :email %>
+	<%= text_field_tag :email%><br />
+	<%= submit_tag "Add +", class: "btn btn-large btn-primary" %>
+<%end%>
+
+</div>
+
+<div id="signup_div" style="display:none;">     <!-- using external stylesheets of course -->
+<%= form_for(@user) do  |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>	
+	<%= f.label :name %>
+	<%= f.text_field :name %>	
+	<%= f.label :name %>
+	<%= f.text_field :name %>	
+	<%= f.label :email %>
+	<%= f.text_field :email%><br />
+	<%= f.submit "Add +", class: "btn btn-large btn-primary" %>
+<%end%>
+
+</div>

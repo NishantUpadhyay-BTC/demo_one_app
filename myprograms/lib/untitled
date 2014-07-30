@@ -1,0 +1,36 @@
+
+def quick_sort(list)
+  sl = list.clone
+  return sl if sl.size <= 1
+  pivot = sl.pop
+  left, right = sl.partition { |e| e < pivot }
+  quick_sort(left) + [pivot] + quick_sort(right)
+end
+hf = Hash.new
+hf[0] = 3
+hf[1] = 2
+hf[2] = 7
+hf[3] = 4
+
+list = hf.values
+ list1 =  quick_sort(list)
+
+weight = 10
+i = 0
+take = []
+puts list1.length
+while i < list1.length do 
+  if list1[i] <= weight then
+  take << list1[i]
+  weight = weight - list1[i]
+  i += 1
+  elsif weight <= 0
+   break
+   else
+    puts "error"
+  end 
+  puts take
+  end
+  
+
+

@@ -1,0 +1,32 @@
+
+
+<div class="row"> 
+
+	<div class="span3 offset5">
+	<h3>Create a new post</h3>
+		<%= form_for(@posts) do |f| %>
+		<%= f.label :Heading %>
+		<%= f.text_field :heading%>
+
+		<%= f.label :Type %>
+		<%= f.text_field :kind %>
+		
+		<%= f.label :Description%>
+		<%= f.text_area :description %>
+
+
+		<%= f.label :Image_path %>
+		<%= f.text_field :image %>
+
+		<%= f.radio_button :visibility, '1', :checked => true %> 
+		<%= label :contactmethod_email, 'True' %>
+		<%= f.radio_button :visibility, '0' %>
+		<%= label :contactmethod_sms, 'False' %>
+		
+		<br />
+		
+		<%= f.submit "Post", class:"btn btn-large btn-primary" %>
+		
+		<%end%>
+	</div>
+</div>

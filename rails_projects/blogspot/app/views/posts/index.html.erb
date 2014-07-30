@@ -1,0 +1,48 @@
+<% provide(:title, "Blog")%>
+<%= form_tag new_post_path, :method=>'get' do %>
+<%= submit_tag "New Post", :name =>'nil'%>
+<%end%>
+
+<%= form_tag posts_path, :method => 'get' do %>
+<%= text_field_tag :search, params[:search]%>
+<%= submit_tag "search"%>
+<% end %>
+
+<div class="row-fluid">
+	<div class="span8" >
+		<% @posts.each do |post| %>
+			<div style="color:black">	
+	
+				<h3><p><%= post.heading%></p></h3>
+				<p><%= post.description%></p>
+				<p><%= post.kind%></p>
+				<%=link_to 'Edit',edit_post_path(post) %>
+				<%=link_to 'Delete',post_path(post), :method => 'delete' %>
+				<%=link_to 'Learn More', post_path(post),:method => 'get' %>
+				<hr />
+			</div>
+		<%end%>
+	</div>
+	<div class="span4" style="border-left: 1px solid black">
+		<ul>
+			<li> Ruby
+				<ul>
+					<% @posts.each do |post|%>
+						<% if post.kind == "ruby" %>
+							<li> <%=link_to "#{post.heading}", post_path(post), :method => 'get' %></li>
+						<% end %>
+						<%end%>
+				</ul>
+			</li>
+			<li>Rails
+				<ul>
+				<% @posts.each do |post|%>
+						<% if post.kind == "rails" %>
+							<li> <%=link_to "#{post.heading}", post_path(post), :method => 'get' %></li>
+						<% end %>
+						<%end%>
+					</ul>
+			</li>
+		</ul>
+	</div>
+</div>
